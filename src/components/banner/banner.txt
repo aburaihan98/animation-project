@@ -1,2 +1,2 @@
-1. banner1 is bubble banner 
-2. 
+1. banner1 is bubble banner with slider
+2. banner2 is bubble banner but not slider
