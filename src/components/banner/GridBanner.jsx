@@ -28,7 +28,7 @@ const banners = [
   },
 ];
 
-export default function CinematicBanner() {
+export default function GridBanner() {
   const [index, setIndex] = useState(0);
   const [showPieces, setShowPieces] = useState(false);
 
