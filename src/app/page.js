@@ -10,9 +10,9 @@ import SwipeBanner from "@/components/banner/SwipeBanner";
 export default function Home() {
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       {/* <Banner1 /> */}
-      {/* <Banner2 /> */}
+      <Banner2 />
       {/* <GridBanner /> */}
       {/* <SwipeBanner /> */}
       {/* <CinematicBanner /> */}

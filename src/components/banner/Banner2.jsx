@@ -17,7 +17,6 @@ export default function Banner2() {
   useEffect(() => {
     const timer = setInterval(() => {
       setShowBubbles(true);
-
       setTimeout(() => {
         setShowBubbles(false);
         setIndex((prev) => (prev + 1) % images.length);
@@ -28,7 +27,7 @@ export default function Banner2() {
   }, []);
 
   return (
-    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[650px] overflow-hidden">
+    <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[650px] overflow-hidden">
       <AnimatePresence>
         <motion.div
           key={index}
@@ -36,9 +35,9 @@ export default function Banner2() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 5 }}
+          transition={{ duration: 1.2 }}
         >
-          {/* Background Image */}
+          {/* 🔹 Banner Image */}
           <Image
             src={images[index]}
             alt={`banner-${index}`}
@@ -47,13 +46,16 @@ export default function Banner2() {
             priority
           />
 
-          {/* Bubble Effect */}
+          {/* 🔹 Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+
+          {/* 🔹 Floating Bubbles */}
           {showBubbles && (
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {[...Array(25)].map((_, i) => (
+              {[...Array(20)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-3 h-3 md:w-4 md:h-4 bg-white/20 rounded-full"
+                  className="absolute w-3 h-3 md:w-4 md:h-4 bg-white/10 rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
                     bottom: "0%",
@@ -73,17 +75,45 @@ export default function Banner2() {
             </div>
           )}
 
-          {/* Optional Text Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center z-10 px-4">
-            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-              Welcome to Our Website
-            </h1>
-            <p className="text-white/80 mt-2 sm:text-lg md:text-xl">
-              Discover our latest collection
-            </p>
-            <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-              Learn More
-            </button>
+          {/* 🔹 Text Content (WoodMart-style) */}
+          <div className="absolute inset-0 flex flex-col justify-center items-start z-10 px-6 sm:px-12 lg:px-24 max-w-3xl">
+            <motion.h2
+              className="text-white/90 text-sm sm:text-base md:text-lg tracking-[6px] uppercase font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Elegant Furniture & Curtains
+            </motion.h2>
+
+            <motion.h1
+              className="text-white text-3xl sm:text-5xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Redefine Your <br className="hidden sm:block" /> Living Experience
+            </motion.h1>
+
+            <motion.p
+              className="text-white/80 text-sm sm:text-base md:text-lg max-w-md mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.2 }}
+            >
+              Discover timeless furniture & premium curtains designed to bring
+              comfort and luxury into your home.
+            </motion.p>
+
+            <motion.a
+              href="#"
+              className="inline-block px-8 py-3 bg-white text-gray-900 font-semibold text-sm md:text-base uppercase rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.3 }}
+            >
+              Explore Collection
+            </motion.a>
           </div>
         </motion.div>
       </AnimatePresence>
